@@ -11,7 +11,7 @@ outfile=sys.argv[2]
 # (specified as an argument when the script is run)
 # It splits the list of GoTerms on the characters "GO:"
 # (rather than the comma delimiter, because some GOTerms have commas in them)
-# and writes one line with the gene if for each goterm
+# and writes one line with the gene id for each goterm
 
 def writeGoLine(id, field, outfile):
     if field != '':                                     # We don't want to bother with blank fields.
@@ -25,20 +25,20 @@ def writeGoLine(id, field, outfile):
 
 
 with open(infile, "r") as goterms: # Open the infile to read
-    for line in goterms:
-        Cols = line.split("\t")
-        id = Cols[0].strip()
-        goBio = Cols[1].strip()
-        goCell = Cols[2].strip()
-        goMol = Cols[3].strip()
+    for line in goterms:                                # This is where we read the file created from EnTAP output
+        Cols = line.split("\t")                         # Split apart the different fields
+        id = Cols[0].strip()                            # Get the transcript ID
+        goBio = Cols[1].strip()                         # Get the list of Biological Process terms
+        goCell = Cols[2].strip()                        # And the list of Cellular Component Terms
+        goMol = Cols[3].strip()                         # And the list of Molecular function terms
                                         # Below, if you want ONLY one kind of annotation (bio process, cell. component)
                                         # comment out the lines that write the kind of annotation you DON'T want.
-        writeGoLine(id, goBio, outfile)
-        writeGoLine(id, goCell, outfile)
-        writeGoLine(id, goMol, outfile)
+        writeGoLine(id, goBio, outfile)                 # Here we use the function defined above to write the one-to-one mapping file.
+        writeGoLine(id, goCell, outfile)                # Note, you could modify this to specify three different output files, and 
+        writeGoLine(id, goMol, outfile)                 # write each type of GO term to a separate file, but it's very unnecessary. 
 
 
-print("I think I'm done")
+print("I think I'm done")                               # I like when my scripts talk to me. 
 
 # IMPORTANT NOTE: the output file may still need to be modified in order to use it with goseq. GoSeq wants only the GO identifier, e.g.
 # GO:0032991 but our EnTAP annotation is a bit more verbose, listing the GO identifier and the term, a la
