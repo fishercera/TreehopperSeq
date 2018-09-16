@@ -1,0 +1,131 @@
+---
+title: "TPM Normalization Between Species"
+author: "Cera Fisher"
+date: "September 14, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Scaling TPM between two species with different numbers of annotated transcripts
+
+_based on Musser & Wagner (2015), JEZ:B_
+
+TPM, transcripts per million mapped, is a way of normalizing RNAseq data that accounts for differences in library size by scaling the abundance of a transcript (the "counts") to the total number of transcripts assumed to be present in the transcriptome. In short, TPM = count for transcript "i" / total number of annotated transcripts * a scaling factor. 
+
+Necessarily, TPM from one species does not map to the TPM of another species if their transcriptomes are of different sizes, which they almost certainly are, so the values for the species with the smaller transcriptome will be inflated relative to the species with the larger transcriptome. According to Musser & Wagner, these values can be rescaled by calculating a scaling factor $\alpha$:
+ $$\alpha = 10^{-6} \sum_{j=1}^{N1} {tpm(Aj)}$$
+ 
+ Where N1 = the number of transcripts for species B (the smaller set), _j_ = all the transcripts in the set, and tpm(Aj) is the transcripts per million for species A for each of the genes _j_ in the set. 
+
+Here is how I interpret this to work in my transcriptomes for _Entylia carinata_ and _Homalodisca vitripennis_. 
+
+
+1) Read in the un-normalized TPM values from RSEM/edgeR. 
+
+```{r warning=FALSE, message=FALSE}
+library("dplyr")
+options(stringsAsFactors = FALSE)
+Ecar.TPM <- read.table("D:/Cera Fisher/Google Drive/Treehoppers/ResearchFiles/RNASeq/GeneExpression_2018/Annotation/ECEF_Refined.isoforms.TPM.not_cross_norm", sep="\t", header=TRUE)
+colnames(Ecar.TPM)
+colnames(Ecar.TPM)[1] <- "ECid"
+
+Hvit.TPM <- read.table("D:/Cera Fisher/Google Drive/Treehoppers/ResearchFiles/RNASeq/GeneExpression_2018/Annotation/HV_Refined.isoform.TPM.not_cross_norm", sep="\t", header=TRUE)
+colnames(Hvit.TPM)
+colnames(Hvit.TPM)[1] <- "HVid"
+
+```
+
+2) Calculate $\alpha$
+
+```{r}
+
+HvitN1 <- as.numeric(length(Hvit.TPM$HVid))
+                                            # 19,126
+EcarN2 <- as.numeric(length(Ecar.TPM$ECid))
+                                            # 19,975
+sumN2.EcarTPM <- sum(Ecar.TPM[,2])
+sumN2.EcarTPM
+
+## Sum of TPM for any given sample should, by definition, be 1,000,000
+# The average TPM for Ecar is the sum divided by the number of transcripts. 
+Ec.avg.TPM <- sumN2.EcarTPM/EcarN2
+
+## Getting the sum of Ecar TPM for the # of transcripts in Hvit's transcriptome
+## i.e, multiplying the average times 19,126
+sum.ECavgTPM.HvitN1 <- Ec.avg.TPM * HvitN1
+
+# To get alpha, divide that amount by 1,000,000
+alpha <- sum.ECavgTPM.HvitN1 * (10**(-6))
+
+alpha
+```
+
+This value for $\alpha$, 0.957....etc is very close to the ratio of the smaller number of transcripts to the larger:
+
+```{r}
+checksum <- HvitN1/EcarN2
+checksum
+
+checksum - alpha
+```
+
+Which perhaps should be expected, since those are the only values in this calculation that don't cancel out. 
+
+Scaling Hvit.TPM, then, goes like this
+
+```{r}
+HV_scaled <- Hvit.TPM[,-1]
+row.names(HV_scaled) <- Hvit.TPM[,1]
+Hvit.TPM.scaled <- HV_scaled * alpha
+dim(HV_scaled)                       
+
+head(Hvit.TPM[,3])
+head(Hvit.TPM.scaled[,2])
+
+```
+
+Multiplying by $\alpha$ results in our Hvit TPM numbers being just a little smaller, though it will matter a lot for some of the outrageously large numbers--
+
+```{r}
+which(Hvit.TPM[,3] == max(Hvit.TPM[,3]))
+#356
+Hvit.TPM[,3][356]
+
+Hvit.TPM.scaled[,2][356]
+
+
+```
+```{r}
+library(DESeq2)
+colData <- read.table("SampleInformation_colData.txt", header=TRUE)
+hvCol <- colData[25:45,]
+hvTPM <- as.matrix(Hvit.TPM.scaled)
+storage.mode(hvTPM) = "integer"
+hv.dds <- DESeqDataSetFromMatrix(hvTPM, colData = hvCol, 
+                                 design = ~ Tissue + Pool)
+
+hv.dds <- estimateSizeFactors(hv.dds)
+hv.dds <- estimateDispersions(hv.dds)
+hvScaledNorm <- as.data.frame(assay(hv.dds), normalized = TRUE)
+write.table(hvScaledNorm, "Hvit_Scaled_SizeNormed_Integer_TPM.txt", sep="\t")
+
+ECid <- Ecar.TPM[,1]
+Ecar.TPM <- Ecar.TPM[,-1]
+Ecar.TPM <- Ecar.TPM[,c(6:13,14:21,31:38)]
+rownames(Ecar.TPM) <- ECid
+ec.dds <- as.matrix(Ecar.TPM)
+ecCol <- colData[1:24,]
+storage.mode(ec.dds) = "integer"
+
+ec.dds <- DESeqDataSetFromMatrix(ec.dds, colData = ecCol,
+                                 design = ~ Tissue + Pool)
+
+ec.dds <- estimateSizeFactors(ec.dds)
+ec.dds <- estimateDispersions(ec.dds)
+ecNorm <- as.data.frame(assay(ec.dds), normalized=TRUE)
+write.table(ecNorm, "Ecar_SizeNormed_Integer_TPM.txt", sep="\t")
+
+```
