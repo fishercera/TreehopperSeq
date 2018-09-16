@@ -98,6 +98,8 @@ Hvit.TPM.scaled[,2][356]
 
 
 ```
+Now, let's save our scaled and size-factor normalized TPM to new files to use later. 
+
 ```{r}
 library(DESeq2)
 colData <- read.table("SampleInformation_colData.txt", header=TRUE)
