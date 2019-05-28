@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/141181484.svg)](https://zenodo.org/badge/latestdoi/141181484)
+
 # TreehopperSeq
 A collection of utility scripts, data analysis pipeline, and documentation for RNA-Seq with non-model organisms.
 
