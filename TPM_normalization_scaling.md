@@ -19,12 +19,12 @@ species if their transcriptomes are of different sizes, which they
 almost certainly are, so the values for the species with the smaller
 transcriptome will be inflated relative to the species with the larger
 transcriptome. According to Musser & Wagner, these values can be
-rescaled by calculating a scaling factor \(\alpha\):
-\[\alpha = 10^{-6} \sum_{j=1}^{N1} {tpm(Aj)}\]
+rescaled by calculating a scaling factor &#945;:
 
-(This would all look quite nice when rendered to HTML. For github, 
-we're stuck with an image of the formula.)
-![A png file of the math](https://i.imgur.com/yDpZjwm.png)
+
+
+![This would all look quite nice when rendered to HTML. For github, 
+we're stuck with an image of the formula.](https://i.imgur.com/yDpZjwm.png)
 
 Where N1 = the number of transcripts for species B (the smaller set),
 *j* = all the transcripts in the set, and tpm(Aj) is the transcripts per
