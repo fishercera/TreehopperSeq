@@ -86,7 +86,7 @@ colnames(Ofas.TPM)
 colnames(Ofas.TPM)[1] <- "OFid"
 ```
 
-2)  Calculate \(\alpha\)
+2)  Calculate &#945;
 
 <!-- end list -->
 
@@ -132,7 +132,7 @@ alpha
 beta <- sum.ECavgTPM.OfasN3 * (10**(-6))
 ```
 
-This value for \(\alpha\), 0.957….etc is very close to the ratio of the
+This value for 	&#945;, 0.957….etc is very close to the ratio of the
 smaller number of transcripts to the larger:
 
 ``` r
@@ -195,7 +195,7 @@ head(Ofas.TPM.scaled[,2])
 
     ## [1] 50.7394409  0.0000000  1.2298195  5.4410906  0.4216747 81.6687746
 
-Multiplying by \(\alpha\) results in our Hvit TPM numbers being just a
+Multiplying by 	&#945; results in our Hvit TPM numbers being just a
 little smaller, though it will matter a lot for some of the outrageously
 large numbers–
 
