@@ -24,6 +24,7 @@ rescaled by calculating a scaling factor \(\alpha\):
 
 (This would all look quite nice when rendered to HTML. For github, 
 we're stuck with an image of the formula.)
+![A png file of the math](https://i.imgur.com/yDpZjwm.png)
 
 Where N1 = the number of transcripts for species B (the smaller set),
 *j* = all the transcripts in the set, and tpm(Aj) is the transcripts per
