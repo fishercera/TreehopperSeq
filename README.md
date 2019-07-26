@@ -25,7 +25,7 @@ Make small test data set
 ## GOSeq Walkthrough
 Files include an R Notebook file outlining the steps used to create the background for GoSeq from EnTAP annotations, create the named vectors that GoSeq will use, and run the enrichment analysis (GoSeq_Walkthrough.RMD). Also included are data files needed to run the script, and the output of running the script with those data files. The file GoTermsMap.py is used to create the one-to-one gene id to GO term map from EnTAP annotations. 
 
-## TPM Normalization and Between-Species Scaling
+## [TPM Normalization and Between-Species Scaling](https://github.com/fishercera/TreehopperSeq/blob/master/TPM_normalization_scaling.md)
 Includes an R Notebook file (should be opened in RStudio) explaining the principles and formula for scaling transcripts per million from one species' transcriptome to another's in order to make the gene expression of the two species more fairly comparable. Also includes **TODO** data files to use to test the code and examine the results of scaling.
 
 ## MLSeq/PLDA classifier Walkthrough
