@@ -274,49 +274,28 @@ sorted.GO
 #What are the top 20 over represented GOTerms?
 sorted.GO[,c(1,6)]
 ```
+## category	         term
+## 1 GO:0042302	     structural constituent of cuticle
+## 2 GO:0044421	     extracellular region part
+## 3 GO:0042221	     response to chemical
+## 4 GO:0009605	     response to external stimulus
+## 5 GO:0043234	     <NA>
+## 6 GO:0060361	     flight
+## 7 GO:0008307	     structural constituent of muscle
+## 8 GO:0044700	     <NA>
+## 9 GO:0044767	     <NA>
+## 10 GO:0016043	  cellular component organization
+## 11 GO:0007154	  cell communication
+## 12 GO:0043228	  non-membrane-bounded organelle
+## 13 GO:0048856	  anatomical structure development
+## 14 GO:0006457	  protein folding
+## 15 GO:0009056	  catabolic process
+## 16 GO:0044707	  <NA>
+## 17 GO:0044763	  <NA>
+## 18 GO:0065008	  regulation of biological quality
+## 19 GO:0044464	  cell part
+## 20 GO:0051641	  cellular localization
 
-    ##       category
-    ## 1   GO:0042302
-    ## 2   GO:0044421
-    ## 3   GO:0042221
-    ## 4   GO:0009605
-    ## 5   GO:0043234
-    ## 6   GO:0060361
-    ## 7   GO:0008307
-    ## 8   GO:0044700
-    ## 9   GO:0044767
-    ## 10  GO:0016043
-    ## 11  GO:0007154
-    ## 12  GO:0043228
-    ## 13  GO:0048856
-    ## 14  GO:0006457
-    ## 15  GO:0009056
-    ## 16  GO:0044707
-    ## 17  GO:0044763
-    ## 18  GO:0065008
-    ## 19  GO:0044464
-    ## 20  GO:0051641
-
-    ## 1                                                                                                  structural constituent of cuticle
-    ## 2                                                                                                          extracellular region part
-    ## 3                                                                                                               response to chemical
-    ## 4                                                                                                      response to external stimulus
-    ## 5                                                                                                                               <NA>
-    ## 6                                                                                                                             flight
-    ## 7                                                                                                   structural constituent of muscle
-    ## 8                                                                                                                               <NA>
-    ## 9                                                                                                                               <NA>
-    ## 10                                                                                                   cellular component organization
-    ## 11                                                                                                                cell communication
-    ## 12                                                                                                    non-membrane-bounded organelle
-    ## 13                                                                                                  anatomical structure development
-    ## 14                                                                                                                   protein folding
-    ## 15                                                                                                                 catabolic process
-    ## 16                                                                                                                              <NA>
-    ## 17                                                                                                                              <NA>
-    ## 18                                                                                                  regulation of biological quality
-    ## 19                                                                                                                         cell part
-    ## 20                                                                                                             cellular localization
 Note – for some reason, many of the GOterms that EnTAP assigned are
 deprecated, or maybe just not meant to be used the way we’re using them,
 and so they show up as NAs. Those GOTerms can be searched on the Amigo
