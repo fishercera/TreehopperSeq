@@ -28,5 +28,5 @@ Files include an R Notebook file outlining the steps used to create the backgrou
 ## [TPM Normalization and Between-Species Scaling](https://github.com/fishercera/TreehopperSeq/blob/master/TPM_normalization_scaling.md)
 Includes an R Notebook file (should be opened in RStudio) explaining the principles and formula for scaling transcripts per million from one species' transcriptome to another's in order to make the gene expression of the two species more fairly comparable. Also includes **TODO** data files to use to test the code and examine the results of scaling.
 
-## MLSeq/PLDA classifier Walkthrough
+## [MLSeq/PLDA classifier Walkthrough](https://github.com/fishercera/TreehopperSeq/blob/master/MLSeq_SpeciesSignal_tuneLength100.md)
 This procedure uses scaled TPM of two species for shared single-copy orthologues to find the minimum set of genes that are sufficient to distinguish one species from the other. Files include an R Notebook file with the steps involved and code to examine the results of removing biased genes, a standalone R script meant to be run on a highly parallel compute cluster, and a small set of test data. 
