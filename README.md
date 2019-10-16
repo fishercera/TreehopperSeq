@@ -22,7 +22,7 @@ Make small test data set
 ## Annotation and Assembly Refinement
 **TODO** Add scripts for using EnTAP to annotate reads, USEARCH to cluster proteomes, and scripts to select nucleotide sequences representative of the clustered proteome (the refined assembly). 
 
-## GOSeq Walkthrough
+## [GOSeq Walkthrough](https://github.com/fishercera/TreehopperSeq/blob/master/GoSeq_Walkthrough.md)
 Files include an R Notebook file outlining the steps used to create the background for GoSeq from EnTAP annotations, create the named vectors that GoSeq will use, and run the enrichment analysis (GoSeq_Walkthrough.RMD). Also included are data files needed to run the script, and the output of running the script with those data files. The file GoTermsMap.py is used to create the one-to-one gene id to GO term map from EnTAP annotations. 
 
 ## [TPM Normalization and Between-Species Scaling](https://github.com/fishercera/TreehopperSeq/blob/master/TPM_normalization_scaling.md)
