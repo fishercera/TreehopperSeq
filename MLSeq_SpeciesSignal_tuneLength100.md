@@ -90,7 +90,7 @@ plot <- p1 + coord_cartesian(xlim=c(0, 15000),
 plot
 ```
 
-![](MLSeq_SpeciesSignal_tuneLength100_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+![](unnamed-chunk-3-1.png)<!-- -->
 
 This plot shows a trident pattern. Extreme outliers in expression along
 the axes indicate genes highly expressed in one species and not
@@ -134,7 +134,7 @@ plot <- p2 + coord_cartesian(xlim=c(0, 15000),
 plot
 ```
 
-![](MLSeq_SpeciesSignal_tuneLength100_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+![](unnamed-chunk-4-1.png)<!-- -->
 
 This plot does not have a trident pattern. Most genes with expression
 biased towards one species have been removed from the set.
