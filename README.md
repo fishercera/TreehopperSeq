@@ -4,8 +4,9 @@
 A collection of utility scripts, data analysis pipeline, and documentation for RNA-Seq with non-model organisms.
 
 Software used as part of this repo:
-- Trinity (trinityRNAseq)
+- Trinity (trinityRNAseq) / bowtie / RSEM
 - TRIMMOMATIC
+- Bowtie2
 - EnTAP 
 - R (Bioconductor packages)
 
