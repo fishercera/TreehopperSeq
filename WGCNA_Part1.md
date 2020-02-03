@@ -228,7 +228,7 @@ dim(traitData)             ## How many rows/columns in the traitData?
     ## [1] 41 59
 
 ``` r
-names(traitData)           ## What are the column names? 
+names(traitData)           ## What are all of the 'trait' names? 
 ```
 
     ##  [1] "Sample"       "ECEF"         "ECFisC"       "ECty4"        "EC_A"        
@@ -267,7 +267,7 @@ dim(allTraits)                ## How many rows/columns are left?
     ## [1] 40 58
 
 ``` r
-names(allTraits)              ## What are the column names? 
+names(allTraits)              ## What are the trait names? 
 ```
 
     ##  [1] "Sample"       "ECEF"         "ECFisC"       "ECty4"        "EC_A"        
