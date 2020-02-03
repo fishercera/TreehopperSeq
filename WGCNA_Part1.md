@@ -160,7 +160,7 @@ plot(sampleTree, main = "Sample clustering to detect outliers", sub="", xlab="",
      cex.axis = 1.5, cex.main = 2)
 ```
 
-![](WGCNA_Module1_Parallel_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![](SampleClusteringToDetectOutliers.png)<!-- -->
 
 Based on what we already know about this data this dendrogram doesn’t
 look very surprising to us. We know that the abdominal samples are the
@@ -310,7 +310,7 @@ plotDendroAndColors(sampleTree2, traitColors,
                     main = "Sample dendrogram and trait heatmap")
 ```
 
-![](WGCNA_Module1_Parallel_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+![](SampleDendrogramAndTraitHeatmap.png)<!-- -->
 
 Because the trait matrix is so big, the tree gets a little squashed when
 we add the traits below it. But this does give us a feel for the kinds
