@@ -13,10 +13,9 @@ Software used as part of this repo:
 
 ## RNA-Seq read processing pipeline
 **TODO** Add scripts for the RNA QC pipeline and a README. 
-1. Quality trim reads
-2. strip PolyA tails
-3. align to ribosomal RNA and remove ribosomal reads
-4. assemble
+1. Quality trim reads _DONE_
+2. Strip PolyA tails _DONE_
+3. Assemble
 
 Make small test data set
 
