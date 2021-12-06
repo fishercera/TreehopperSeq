@@ -33,6 +33,8 @@ but will need to be edited so that it looks more like
     ECEF_Abd_TRINITY_DN10037_c0_g1  GO:0007154-cell communication(L=2)                  GO:0007154
     ECEF_Abd_TRINITY_DN10037_c0_g1  GO:0009058-biosynthetic process(L=2)                GO:0009058
 
+In my example, this file is loaded in to the object `cat.map` and the file is named `ECEF_GoTerm_Extended.txt`.
+
 That is to say, goseq wants just the GO identifier and not the verbose
 category. If you are feeling clever, you can just fix it in R with
 regular expressions.
