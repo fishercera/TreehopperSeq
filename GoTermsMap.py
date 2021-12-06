@@ -2,6 +2,8 @@
 # Takes a file of gene IDs and GoTerms from EnTap and makes a many-to-many tab delimited mapping file appropriate for use with GoSeq in R.
 # Create the infile in bash using:
 # cut -f 1,28,29,30 entap.final_annotations.tsv > entap_goTerms.tsv
+#### TODO: Fix this so that the output is exactly what GoSeq needs - three columns with third column == GO id
+
 import sys
 
 infile=sys.argv[1]
